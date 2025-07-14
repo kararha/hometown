@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="website icon" type="png"
+    href="images/hoom.ico" </link>
+  <title>About Us</title>
+  <style>
+          body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+          }
+      
+          header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            margin-top: 6.5rem;
+            padding: 10px;
+          }
+      
+          section {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+            margin-bottom: 40px; /* Add margin between sections */
+          }
+      
+          .content-one {
+            margin: 50px;
+            padding-bottom: 20px;
+            width: 50%; /* Adjust the width as needed */
+            text-align: left;
+          }
+      
+          .question-one {
+            text-align: left;
+          }
+      
+          .answer-one {
+            text-align: left;
+          }
+      
+          .image-container-one {
+            width: 40%; /* Adjust the width as needed */
+            text-align: right;
+          }
+      
+          .image-container-one img {
+            width: 100%;
+            border-radius: 10px;
+          }
+
+          /* Customize styles for the second section */
+          .content-second {
+            margin: 50px;
+            padding-bottom: 20px;
+            width: 50%; /* Adjust the width as needed */
+            text-align: right;
+          }
+      
+          .question-second {
+            text-align: right;
+          }
+      
+          .answer-second {
+            text-align: left;
+          }
+      
+          .image-container-second {
+            width: 40%; /* Adjust the width as needed */
+            text-align: left;
+          }
+      
+          .image-container-second img {
+            width: 100%;
+            border-radius: 10px;
+          }
+      
+          /* Customize styles for the third section */
+          .content-third {
+            margin: 50px;
+            padding-bottom: 20px;
+            width: 50%; /* Adjust the width as needed */
+            text-align: left;
+          }
+      
+          .question-third {
+            text-align: left;
+          }
+      
+          .answer-third {
+            text-align: left;
+          }
+      
+          .image-container-third {
+            width: 40%; /* Adjust the width as needed */
+            text-align: right;
+          }
+      
+          .image-container-third img {
+            width: 100%;
+            border-radius: 10px;
+          }
+
+          .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+          }
+
+          .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+          }
+
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <!-- LOGO -->
+    <div class="logo"><img width="100px" height="100px" src="images/hoom.png"></div>
+
+    <!-- NAVIGATION MENU -->
+    <ul class="nav-links">
+
+      <!-- USING CHECKBOX HACK -->
+      <input type="checkbox" id="checkbox_toggle" />
+      <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+
+      <!-- NAVIGATION MENUS -->
+      <div class="menu">
+
+        <li><a href="index.php">Home</a></li>
+        <li><a href="login.php">login</a></li>
+
+        <li class="services">
+          <a href="findPro.php">Find Profisstional</a>
+
+          <!-- DROPDOWN MENU -->
+          <ul class="dropdown">
+            <li><a href="findPro.html">Contracting company </a></li>
+            <li><a href="findPro.html">contractor</a></li>
+          </ul>
+
+        </li>
+
+        <li><a href="contact_us.php">contact us</a></li>
+        <li><a href="about_us.html">about</a></li>
+      </div>
+    </ul>
+  </nav>
+
+        <header>
+          <h1>About Us</h1>
+        </header>
+      
+        <!-- First section -->
+        <section>
+          <div class="image-container-one">
+            <img src="images/goal.jpg" alt="Third Image">
+          </div>
+          <div class="content-one">
+            <div class="question-one">
+              <h2>What is Our Goal?</h2>
+            </div>
+            <div class="answer-one">
+              <p>Our goal is to revolutionize the construction and contracting industry through our dedicated website. We aim to connect construction professionals and contractors, providing a platform that streamlines the process of finding skilled individuals and contracting companies. By fostering collaboration and efficiency, we strive to contribute to the success of construction projects and the growth of businesses in the industry.</p>
+            </div>
+          </div>
+        </section>
+      
+        <!-- Second section -->
+        <section>
+          <div class="content-second">
+            <div class="question-second">
+              <h2>What is Our Letter?</h2>
+            </div>
+            <div class="answer-second">
+              <p>Our letter is a testament to our commitment to excellence and customer satisfaction. It represents our dedication to delivering quality services in the construction and contracting industry. Each project is approached with attention to detail, professionalism, and a focus on exceeding client expectations. Our letter is a symbol of integrity, reliability, and the pursuit of innovative solutions to meet the unique needs of our clients.</p>
+            </div>
+          </div>
+          <div class="image-container-second">
+            <img src="images/letter.jpg" width="600px" height="300px" alt="Second Image">
+          </div>
+        </section>
+      
+        <!-- Third section -->
+        <section>
+          <div class="image-container-third">
+            <img src="images/Purpose.jpg" alt="Third Image">
+          </div>
+          <div class="content-third">
+            <div class="question-third">
+              <h2>What is Our Purpose?</h2>
+            </div>
+            <div class="answer-third">
+              <p>Our purpose is to empower individuals and businesses in the construction and contracting field. We strive to be a catalyst for growth, providing a platform that facilitates meaningful connections and collaborations. By promoting transparency, efficiency, and excellence, our purpose is to contribute to the success of projects and the overall advancement of the construction industry. We are committed to creating opportunities and fostering innovation to meet the evolving needs of our community.</p>
+            </div>
+          </div>
+        </section>
+
+        
+
+
+        <footer class="page-footer">
+          <p class="copyright-text">Copyright &copy;  HomTown | designed by sakina</p>
+        </footer>
+
+
+        <script>
+          // Add event listeners to trigger the fade-in effect
+          document.addEventListener("DOMContentLoaded", function () {
+            const sections = document.querySelectorAll("section");
+      
+            function checkScroll() {
+              sections.forEach((section) => {
+                const rect = section.getBoundingClientRect();
+                const isVisible = rect.top <= window.innerHeight - 100 && rect.bottom >= 0;
+      
+                if (isVisible) {
+                  section.classList.add("fade-in", "active");
+                } else {
+                  section.classList.remove("active");
+                }
+              });
+            }
+      
+            window.addEventListener("scroll", checkScroll);
+            checkScroll(); // Trigger check on page load
+          });
+        </script>
+      </body>
+      </html>
+      

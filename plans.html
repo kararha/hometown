@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Subscription Plans</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+      margin-top: 10rem;
+    }
+
+    .plans-container {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .plan {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      width: 30%; /* Adjust the width of each plan */
+      margin: 0 10px; /* Add margin to create space between plans */
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .plan:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0, 123, 255, 0.7);
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    p {
+      color: #666;
+      font-size: 1.2rem;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<form action="plan.php" method="POST" enctype="multipart/form-data">
+  <div class="plans-container">
+    <div class="plan">
+      <h2>Basic</h2>
+      <p>$10/month</p>
+      <ul>
+        <li>Access to basic features</li>
+        <li>Suitable for users who require only essential functionalities and are comfortable with basic support.</li>
+        <li>Limited support</li>
+      </ul>
+      <input type="hidden" name="plan_id" value="1"> <!-- Value represents the ID of the plan -->
+      <button>Select Plan</button>
+    </div>
+
+    <div class="plan">
+      <h2>Standard</h2>
+      <p>$20/month</p>
+      <ul>
+        <li>Access to standard features</li>
+        <li>Suitable for users who need more advanced features and faster assistance from support teams.</li>
+        <li>Priority support</li>
+      </ul>
+      <input type="hidden" name="plan_id" value="2"> <!-- Value represents the ID of the plan -->
+      <button>Select Plan</button>
+    </div>
+
+    <div class="plan">
+      <h2>Premium</h2>
+      <p>$30/month</p>
+      <ul>
+        <li>Access to premium features</li>
+        <li>Suitable for users who require the highest level of service, including advanced features and round-the-clock support availability.</li>
+        <li>24/7 support</li>
+      </ul>
+      <input type="hidden" name="plan_id" value="3"> <!-- Value represents the ID of the plan -->
+      <button>Select Plan</button>
+    </div>
+  </div>
+</form>
+  
+</body>
+</html>

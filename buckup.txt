@@ -1,0 +1,610 @@
+ <form action="" method="post" enctype="multipart/form-data">
+      <h3 style="text-align: center;">Register </h3><br/>
+      <?php
+        if(isset($error)){
+          foreach($error as $error){
+            echo '<span class="error-msg">'.$error.'</span>';
+          };
+        };
+      ?>
+      <input type="text" name="name" required placeholder="enter your name">
+      <input type="email" name="email" required placeholder="enter your email">
+      <input type="text" name="job" required placeholder=" your Job title">
+      <input type="text" name="description" required placeholder=" your Description">
+      <input type="text" name="addr" required placeholder=" your address">
+      <input type="text" name="phone" required placeholder=" your Phone">
+      <label for="profile_image">Profile Image:</label>
+      <input type="file" name="profile_image" accept="image/*" required>
+      <input type="password" name="password" required placeholder="enter your password">
+      <input type="password" name="cpassword" required placeholder="confirm your password">
+      <input type="submit" name="submit" value="register now" class="form-btn">
+      <p> already have an account ? <a href="login_form.php"> login now</p>
+    </form>
+
+
+
+
+    =====================
+     // Handle image upload
+    $targetDirectory = "uploads/"; // Specify the directory where you want to store uploaded images
+    $targetFile = $targetDirectory . basename($_FILES["profile_image"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+    // Check if image file is a actual image or fake image
+    $check = getimagesize($_FILES["profile_image"]["tmp_name"]);
+    if ($check !== false) {
+        $uploadOk = 1;
+    } else {
+        $uploadOk = 0;
+        $error[] = "File is not an image.";
+    }
+
+    // Check file size
+    if ($_FILES["profile_image"]["size"] > 500000) {
+        $uploadOk = 0;
+        $error[] = "Sorry, your file is too large.";
+    }
+
+    // Allow certain file formats
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+        $uploadOk = 0;
+        $error[] = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    }
+
+    // Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+        $error[] = "Sorry, your file was not uploaded.";
+    } else {
+        // If everything is ok, try to upload file
+        if (move_uploaded_file($_FILES["profile_image"]["tmp_name"], $targetFile)) {
+            // Add the file path to the database or use it as needed
+            $profileImagePath = $targetFile;
+
+
+
+
+
+ <?php
+        // if(isset($error)){
+        //   foreach($error as $error){
+        //     echo '<span class="error-msg">'.$error.'</span>';
+        //   };
+        // };
+      ?>
+      <input type="email" name="email" required placeholder="enter your email">
+      <input type="password" name="password" required placeholder="enter your password">
+      <input type="submit" name="submit" value="login now" class="form-btn">
+      <p> dont't  have an account ? <a href="regester_page.php"> register now</p>
+    </form>
+    </center>
+  </div> -->
+
+
+
+
+  ===================================
+
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"> -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="website icon" type="png"
+    href="images/hoom.ico" </link>
+    <link rel="stylesheet" href="php.css">
+    <title>login form</title>
+</head>
+<body>
+
+<nav class="navbar">
+    <!-- LOGO -->
+    <div class="logo"><img width="100px" height="100px" src="images/hoom.png"></div>
+
+    <!-- NAVIGATION MENU -->
+    <ul class="nav-links">
+
+      <!-- USING CHECKBOX HACK -->
+      <input type="checkbox" id="checkbox_toggle" />
+      <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+
+      <!-- NAVIGATION MENUS -->
+      <div class="menu">
+
+        <li><a href="index.php">Home</a></li>
+        <li><a href="login.php">login</a></li>
+
+        <li class="services">
+          <a href="findPro.php">Find Profisstional</a>
+
+          <!-- DROPDOWN MENU -->
+          <ul class="dropdown">
+            <li><a href="/">Contracting company </a></li>
+            <li><a href="/">contractor</a></li>
+          </ul>
+
+        </li>
+
+        <li><a href="contact_us.html">contact us</a></li>
+        <li><a href="about_us.html">about</a></li>
+        <li>  <?php
+            // Check if the user is logged in and if the image path is available in session
+            if(isset($_SESSION['logged_in']) && isset($_SESSION['user_image'])) {
+                echo '<img src="' . $_SESSION['user_image'] . '" alt="User Image">';
+            }
+        ?></li>
+      </div>
+    </ul>
+  </nav>
+
+  <div class="from-container">
+    <center>
+    <form action="dall.php" method="post">
+        <div class="base-div" >
+            <div class="logo-div" >
+                 <div><p class="text">HomeTown</p></div>
+                </div>
+                <div class="login-detels" >
+                <input class="text-input" type="email" name="email" required placeholder="Enter your email">
+                <input class="text-input" type="password" name="password" required placeholder="Enter your password">
+                <button class="button-pro" type="submit" name="submit">Login Now</button>
+                <p>Don't have an account? <a href="regester_page.php">Register now</a></p>
+                </div>
+        </div>
+    </form>
+
+</body>
+</html>
+===============================
+
+
+ // Check in the prof table
+     $profQuery = "SELECT * FROM prof WHERE email = ?";
+     $stmt = $conn->prepare($profQuery);
+     $stmt->bind_param("s", $email);
+     $stmt->execute();
+     $profResult = $stmt->get_result();
+ 
+     if ($profResult && $profResult->num_rows > 0) {
+         $profRow = $profResult->fetch_assoc();
+ 
+         // Debug: Output fetched row from the database
+         echo "Fetched User Data: " . print_r($profRow, true) . "<br>";
+ 
+         // Verify password hash
+         $hashed_password = $profRow['password'];
+         $password_matched = password_verify($password, $hashed_password);
+         echo "Password Matched: " . ($password_matched ? "Yes" : "No") . "<br>";
+ 
+         if ($password_matched) {
+             // Debug: Output success message before setting session variables
+             echo "Login successful. Setting session variables...<br>";
+ 
+             // Set session variables
+             $_SESSION['user_id'] = $profRow['pro_id'];
+             $_SESSION['user_type'] = 'professional';
+             $_SESSION['user_image'] = $profRow['profile_image'];
+ 
+             // Debug: Output session variables
+             echo "Session Variables:<br>";
+             echo "user_id: " . $_SESSION['user_id'] . "<br>";
+             echo "user_type: " . $_SESSION['user_type'] . "<br>";
+             echo "user_image: " . $_SESSION['user_image'] . "<br>";
+ 
+             // Debug: Output success message before redirection
+             echo "Redirecting to index.php...<br>";
+ 
+             // Redirect to index.php after successful login
+             header('location: index.php');
+             exit();
+         } else {
+             // Debug: Output error message if password verification fails
+             echo "Password verification failed.<br>";
+         }
+     }
+
+     ============================================
+
+
+         <div class="professional-section">
+
+      <div class="profile-section">
+
+        <div class="profile-header">
+          <div class="profile-image">
+            <!-- Replace 'professional1.jpg' with the path to the professional's image -->
+            <img src="professional1.jpg" alt="Professional Image">
+          </div>
+
+          <div>
+            <div class="job-title">
+              Software Developer <!-- Replace with the actual job title -->
+            </div>
+
+            <div class="rating">
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="description" >
+          <!-- Replace with the actual description of the professional -->
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, justo nec eleifend euismod, quam tortor vestibulum est.
+        </div>
+
+        <div class="navigation-bar">
+          <a href="#projects">Projects</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#about-us">About Us</a>
+        </div>
+
+        <div id="projects" class="projects">
+          <!-- Project 1 -->
+          <div class="project">
+            <img src="project1.jpg" alt="Project 1">
+            <p>Project 1</p>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project">
+            <img src="project2.jpg" alt="Project 2">
+            <p>Project 2</p>
+          </div>
+
+          <!-- Add more projects as needed -->
+        </div>
+        
+           <!-- Reviews Section -->
+        <div id="reviews" class="reviews-section">
+          <div class="review">
+            <div class="review-image">
+              <img src="reviewer1.jpg" alt="Reviewer 1">
+            </div>
+            <div class="review-details">
+              <div class="review-name">John Doe</div>
+              <div class="review-rating">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+              <div class="review-content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, justo nec eleifend euismod, quam tortor vestibulum est.
+              </div>
+            </div>
+          </div>
+
+          <div class="review">
+            <div class="review-image">
+              <img src="reviewer2.jpg" alt="Reviewer 2">
+            </div>
+            <div class="review-details">
+              <div class="review-name">Jane Smith</div>
+              <div class="review-rating">&#9733; &#9733; &#9733; &#9733; &#9734;</div>
+              <div class="review-content">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </div>
+            </div>
+          </div>
+          <!-- Add more reviews as needed -->
+        </div>
+      </div>
+
+
+
+
+      -----------------------------------------------------------------
+
+      
+The password_hash() function is a built-in PHP function used for securely hashing passwords. Here's a detailed explanation of how it works:
+
+Parameters:
+
+$password: This parameter represents the plaintext password that you want to hash. It's the password entered by the user.
+PASSWORD_DEFAULT: This parameter specifies the hashing algorithm to be used. When PASSWORD_DEFAULT is used, PHP chooses the strongest algorithm available at the time of implementation. It's recommended to use PASSWORD_DEFAULT instead of specifying a specific algorithm because it future-proofs your code. As PHP evolves, stronger hashing algorithms might be added or the default algorithm might change for improved security.
+Return Value:
+
+The password_hash() function returns the hashed password as a string. This hashed password is a one-way transformation, meaning it cannot be reversed to obtain the original plaintext password. This is crucial for security because even if someone gains access to the hashed passwords, they cannot easily determine the original passwords.
+Hashing Algorithm:
+
+The password_hash() function uses a cryptographic hashing algorithm to generate a hash of the password. This algorithm is designed to be computationally expensive, making it difficult for attackers to reverse-engineer the original password even with access to the hash. As mentioned earlier, the specific algorithm used is determined by the PASSWORD_DEFAULT constant.
+Salting:
+
+One of the key features of password_hash() is that it automatically generates a random salt for each password hash. A salt is a random string of characters added to the password before hashing. Salting ensures that even if two users have the same password, their hashed passwords will be different, making it more difficult for attackers to use precomputed hash tables (rainbow tables) to crack passwords.
+Security Considerations:
+
+Using password_hash() is considered best practice for storing passwords securely in a database. It protects against common password attacks such as brute-force attacks and rainbow table attacks.
+It's important to note that the password_hash() function takes care of generating a secure salt and choosing the appropriate hashing algorithm, so there's no need to manually manage these aspects.
+Overall, password_hash() provides a simple and effective way to hash passwords securely, helping to protect user accounts from unauthorized access and ensuring the confidentiality of user credentials.
+---------------------------------------------------------
+
+
+The mysqli_real_escape_string() function is used in PHP to escape special characters in a string for use in an SQL statement. Here's a detailed explanation of how it works:
+
+Parameters:
+
+$conn: This parameter represents the MySQL database connection object. It's used to specify the database connection context within which the escaping is performed.
+$firstname: This parameter represents the string that needs to be escaped. Typically, this string contains user input or data that will be inserted into an SQL query. It's important to escape this string to prevent SQL injection attacks.
+Purpose:
+
+The primary purpose of mysqli_real_escape_string() is to prevent SQL injection attacks. SQL injection is a type of security vulnerability where an attacker can execute arbitrary SQL commands by manipulating the input data passed into SQL queries. By escaping special characters, the function ensures that user input is treated as data rather than executable SQL commands.
+Special Characters Escaped:
+
+mysqli_real_escape_string() escapes the following characters:
+\
+' (single quote)
+" (double quote)
+\x00 (NULL character)
+\n (newline)
+\r (carriage return)
+\x1a (Ctrl+Z)
+How It Works:
+
+The function analyzes the provided string and escapes any characters that have special meaning in SQL queries by prefixing them with a backslash \. This ensures that those characters are treated as literal characters rather than being interpreted as part of the SQL syntax.
+Usage:
+
+Before inserting user input into an SQL query, it's recommended to use mysqli_real_escape_string() to escape the input string. This ensures that the input data is sanitized and doesn't inadvertently modify the SQL query structure.
+Example:
+
+php
+Copy code
+$unsafe_data = "Robert'; DROP TABLE Students;--";
+$safe_data = mysqli_real_escape_string($conn, $unsafe_data);
+// $safe_data now contains "Robert\'; DROP TABLE Students;--"
+In this example, if $unsafe_data were directly inserted into an SQL query without escaping, it would result in a potential SQL injection vulnerability. However, by using mysqli_real_escape_string(), the dangerous characters in $unsafe_data are properly escaped, mitigating the risk of SQL injection.
+
+Overall, mysqli_real_escape_string() is an essential function for ensuring the security and integrity of SQL queries when dealing with user-provided data in PHP applications.
+-------------------------------------------------------------------------------------
+
+The session_start() function is a PHP function used to initialize a session or resume the current session. Here's a detailed explanation of what it does:
+
+Start or Resume Session: When a user visits a PHP page for the first time or makes another request to a PHP page, PHP creates or resumes a session for that user. This is essential for tracking user-specific data across multiple pages or requests.
+
+Session Initialization: If the session hasn't been started yet in the current request, session_start() initializes a new session. This involves generating a unique session ID for the user and storing it as a cookie in the user's browser. Additionally, PHP sets up server-side storage for session data associated with this session ID.
+
+Session Resumption: If the session has already been started in a previous request, session_start() resumes the existing session identified by the session ID stored in the user's cookie. This allows PHP to access and manipulate session data associated with the user's session.
+
+Access to Session Data: Once the session has been started or resumed, PHP provides access to session data through the $_SESSION superglobal array. This array allows developers to store and retrieve session variables, which can hold user-specific information needed across different pages or requests.
+
+Maintaining Session State: Throughout the user's interaction with the website, session_start() ensures that the session remains active and accessible. It also manages the session's lifecycle, including destroying the session when the user logs out or after a certain period of inactivity.
+
+Security Considerations: Sessions often involve sensitive user data, so session_start() also handles security aspects such as generating secure session IDs to prevent session hijacking and managing session data securely on the server side.
+
+In summary, session_start() is a crucial PHP function for managing user sessions, enabling developers to maintain stateful interactions with users across multiple requests while ensuring the security and integrity of session data.
+------------------------------------------------------
+
+In the SQL query $profQuery = "SELECT * FROM prof WHERE email = ?";, the question mark (?) at the end of the line is a placeholder for a parameter in a prepared statement. Here's what it means:
+
+Prepared Statement: This query is a prepared statement, which is a template SQL query with placeholders for parameters. Prepared statements are used to execute SQL queries safely by separating the query structure from the data being provided.
+
+Parameterized Query: The ? in the query acts as a placeholder for a parameter that will be provided later. When the query is executed, the actual value for this parameter will be substituted into the query before execution.
+
+Parameter Binding: The actual value for the parameter is bound to the placeholder at runtime. This is typically done using a database library's functionality to bind parameters to prepared statements. In PHP, it's often done using the bind_param() method for MySQLi prepared statements or bindParam() method for PDO prepared statements.
+
+Preventing SQL Injection: Using prepared statements with parameterized queries helps prevent SQL injection attacks. Since parameters are bound separately from the SQL query itself, it's impossible for an attacker to inject malicious SQL code into the query.
+
+Example Usage (MySQLi):
+
+php
+Copy code
+// Assuming $conn is a MySQLi database connection
+$email = "example@example.com"; // Example value
+$stmt = $conn->prepare("SELECT * FROM prof WHERE email = ?");
+$stmt->bind_param("s", $email);
+$stmt->execute();
+In the example above, "s" in bind_param() indicates that the parameter $email is a string. The value of $email will be safely substituted into the query at runtime, replacing the ?. This approach ensures both security and flexibility when working with dynamic data in SQL queries.
+----------------------------------------------------------------------
+$conn->prepare($profQuery):
+
+prepare() is a method provided by the PDO or MySQLi extension in PHP to create a prepared statement. It prepares the SQL query provided as a parameter for execution.
+$conn refers to the database connection object established earlier in the code.
+$profQuery is the SQL query string prepared earlier, in this case, "SELECT * FROM prof WHERE email = ?".
+This method returns a prepared statement object that can be used to execute the query.
+$stmt->bind_param("s", $email):
+
+bind_param() is a method used to bind parameters to the prepared statement before execution. It associates variables with the parameters in the SQL statement.
+"s" specifies the data type of the parameter being bound. In this case, "s" indicates that the parameter is a string. Other data type specifiers include "i" for integer, "d" for double, and "b" for blob.
+$email is the value that will be substituted for the placeholder ? in the prepared statement.
+This step ensures that the value of $email is properly escaped and sanitized before being inserted into the query, protecting against SQL injection attacks.
+$stmt->execute():
+
+execute() is a method that executes the prepared statement with the parameters that have been bound to it.
+When executed, the placeholder ? in the prepared statement is replaced with the actual value of $email.
+The database server processes the SQL query and returns the result set if applicable.
+$stmt->get_result():
+
+get_result() is a method used to retrieve the result set returned by a SELECT query executed using a prepared statement.
+It fetches the result set into a PHP object that can be used to access the rows and columns of the result set.
+This method is typically used when executing SELECT queries and when you expect to retrieve data from the database.
+In summary, these steps together form the process of executing a parameterized SQL query using prepared statements. This approach ensures both security (by preventing SQL injection) and flexibility (by allowing dynamic data to be safely inserted into the query).
+
+
+k = "loly \"boob\" "
+
+
+=====================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Subscription Plans</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+      margin-top: 10rem;
+    }
+
+    .plans-container {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .plan {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      width: 30%; /* Adjust the width of each plan */
+      margin: 0 10px; /* Add margin to create space between plans */
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .plan:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0, 123, 255, 0.7);
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    p {
+      color: #666;
+      font-size: 1.2rem;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="plans-container">
+    <div class="plan">
+      <h2>Basic</h2>
+      <p>$10/month</p>
+      <ul>
+        <li>Access to basic features</li>
+        <li>Suitable for users who require only essential functionalities and are comfortable with basic support.</li>
+        <li>Limited support</li>
+      </ul>
+      <input type="hidden" name="plan_id" value="1"> <!-- Value represents the ID of the plan -->
+      <button>Select Plan</button>
+    </div>
+
+    <div class="plan">
+      <h2>Standard</h2>
+      <p>$20/month</p>
+      <ul>
+        <li>Access to standard features</li>
+        <li>Suitable for users who need more advanced features and faster assistance from support teams.</li>
+        <li>Priority support</li>
+      </ul>
+      <input type="hidden" name="plan_id" value="2"> <!-- Value represents the ID of the plan -->
+      <button>Select Plan</button>
+    </div>
+
+    <div class="plan">
+      <h2>Premium</h2>
+      <p>$30/month</p>
+      <ul>
+        <li>Access to premium features</li>
+        <li>Suitable for users who require the highest level of service, including advanced features and round-the-clock support availability.</li>
+        <li>24/7 support</li>
+      </ul>
+      <input type="hidden" name="plan_id" value="3"> <!-- Value represents the ID of the plan -->
+      <button>Select Plan</button>
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
+-----------------------------------------------------------------
+
+
+DELIMITER $$
+
+-- Procedure to create triggers for all tables in the database
+CREATE PROCEDURE create_triggers_for_all_tables()
+BEGIN
+    DECLARE done INT DEFAULT FALSE;
+    DECLARE tableName VARCHAR(255);
+
+    -- Cursor to iterate through all tables in the database
+    DECLARE cur CURSOR FOR
+        SELECT table_name
+        FROM information_schema.tables
+        WHERE table_schema = DATABASE() AND table_type = 'BASE TABLE';
+
+    -- Handler to exit loop
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+    OPEN cur;
+
+    -- Loop through all tables
+    read_loop: LOOP
+        FETCH cur INTO tableName;
+        IF done THEN
+            LEAVE read_loop;
+        END IF;
+
+        -- Trigger for INSERT operation
+        SET @insert_trigger_sql = CONCAT(
+            'CREATE TRIGGER log_', tableName, '_insert AFTER INSERT ON ', tableName, ' FOR EACH ROW ',
+            'BEGIN ',
+                'INSERT INTO logs (log_type, log_message) ',
+                'VALUES (\'info\', CONCAT(\'New record inserted into ', tableName, ' with ID: \', NEW.id)); ',
+            'END;'
+        );
+        PREPARE insert_trigger_stmt FROM @insert_trigger_sql;
+        EXECUTE insert_trigger_stmt;
+        DEALLOCATE PREPARE insert_trigger_stmt;
+
+        -- Trigger for UPDATE operation
+        SET @update_trigger_sql = CONCAT(
+            'CREATE TRIGGER log_', tableName, '_update AFTER UPDATE ON ', tableName, ' FOR EACH ROW ',
+            'BEGIN ',
+                'INSERT INTO logs (log_type, log_message) ',
+                'VALUES (\'info\', CONCAT(\'Record updated in ', tableName, ' with ID: \', NEW.id)); ',
+            'END;'
+        );
+        PREPARE update_trigger_stmt FROM @update_trigger_sql;
+        EXECUTE update_trigger_stmt;
+        DEALLOCATE PREPARE update_trigger_stmt;
+
+        -- Trigger for DELETE operation
+        SET @delete_trigger_sql = CONCAT(
+            'CREATE TRIGGER log_', tableName, '_delete AFTER DELETE ON ', tableName, ' FOR EACH ROW ',
+            'BEGIN ',
+                'INSERT INTO logs (log_type, log_message) ',
+                'VALUES (\'info\', CONCAT(\'Record deleted from ', tableName, ' with ID: \', OLD.id)); ',
+            'END;'
+        );
+        PREPARE delete_trigger_stmt FROM @delete_trigger_sql;
+        EXECUTE delete_trigger_stmt;
+        DEALLOCATE PREPARE delete_trigger_stmt;
+
+    END LOOP;
+
+    CLOSE cur;
+END$$
+
+DELIMITER ;

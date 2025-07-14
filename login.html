@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/php.css"/>
+    <link rel="website icon" type="png"
+    href="images/hoom.ico" </link>
+    <title>login form</title>
+</head>
+<body>
+
+  <nav class="navbar">
+    <!-- LOGO -->
+    <div class="logo"><img width="100px" height="100px" src="images/hoom.png"></div>
+
+    <!-- NAVIGATION MENU -->
+    <ul class="nav-links">
+
+      <!-- USING CHECKBOX HACK -->
+      <input type="checkbox" id="checkbox_toggle" />
+      <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+
+      <!-- NAVIGATION MENUS -->
+      <div class="menu">
+
+        <li><a href="index.php">Home</a></li>
+        <li><a href="login.html">Login</a></li>
+
+        <li class="services">
+          <a href="findPro.php">Find Profisstional</a>
+
+          <!-- DROPDOWN MENU -->
+          <ul class="dropdown">
+            <li><a href="findPro.php">Contracting company </a></li>
+            <li><a href="findPro.php">Contractor</a></li>
+          </ul>
+
+        </li>
+
+        <li><a href="contact_us.php">Contact us</a></li>
+        <li><a href="about_us.html">About</a></li>
+      </div>
+    </ul>
+  </nav>
+
+  <div class="from-container">
+    <center>
+    <form action="keep.php" method="post" enctype="multipart/form-data">
+        <div class="base-div" >
+            <div class="logo-div" >
+                 <div><p class="text">HomeTown</p></div>
+                </div>
+                <div class="login-detels" >
+                <input class="text-input" type="email" name="email" required placeholder="Enter your email">
+                <input class="text-input" type="password" name="password" required placeholder="Enter your password">
+                <button class="button-pro" type="submit">Login Now</button>
+                <p>Don't have an account? <a href="regester_page.php">Register now</a></p>
+                </div>
+        </div>
+    </form>
+
+</body>
+</html>
